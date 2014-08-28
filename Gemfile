@@ -8,8 +8,6 @@ gem 'timecop'
 
 group :development do
   gem 'pry'
-  gem 'capistrano', '>= 3.0.0.pre13'
-  gem 'capistrano-spree', :git => 'git@github.com:spree/capistrano-spree.git', :require => nil
 end
 
 group :test do
