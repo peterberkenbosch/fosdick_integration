@@ -5,7 +5,7 @@ class FosdickEndpoint < EndpointBase::Sinatra::Base
 
   before do
     AWS.config(access_key_id: @config['fosdick_amazon_key'],
-               secret_access_key: @config['fosdick_amazon_secret_key'])
+               secret_access_key: @config['fosdick_amazon_secret_key']) if @config
   end
 
   post '/add_shipment' do
