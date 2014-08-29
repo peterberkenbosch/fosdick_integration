@@ -8,15 +8,15 @@ module Documents
     def to_xml
       builder = Nokogiri::XML::Builder.new do |xml|
         xml.UnitycartOrderPost('xml:lang' => 'en-US') {
-          xml.ClientCode(@config['fosdick_client_code'])
+          xml.ClientCode(@config['client_code'])
           xml.TransactionID(SecureRandom.hex(15))
           xml.Order {
             xml.Test('Y') if test?
             xml.ShippingMethod(@shipment['shipping_method'])
             xml.Subtotal(0)
             xml.Total(0)
-            xml.ExternalID("#{@shipment['number']}-#{@shipment['order_number']}")
-            xml.AdCode(@config['fosdick_adcode'])
+            xml.ExternalID("#{@shipment['id']}")
+            xml.AdCode(@config['adcode'])
             xml.Prepaid('Y')
             xml.ShipFirstname truncate_name
             xml.ShipLastname(@shipment['shipping_address']['lastname'])
@@ -30,7 +30,7 @@ module Documents
             xml.Items {
               @shipment['items'].each_with_index do |item, index|
                 xml.Item {
-                  xml.Inv item['sku']
+                  xml.Inv item['product_id']
                   xml.Qty item['quantity']
                   xml.PricePer 0
                 }
@@ -55,7 +55,7 @@ module Documents
     end
 
     def test?
-      case @config['fosdick_test'].to_s.downcase
+      case @config['test'].to_s.downcase
       when 'yes'
         true
       else

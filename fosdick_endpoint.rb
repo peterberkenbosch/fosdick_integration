@@ -4,8 +4,8 @@ Dir['./lib/**/*.rb'].each { |f| require f }
 class FosdickEndpoint < EndpointBase::Sinatra::Base
 
   before do
-    AWS.config(access_key_id: @config['fosdick_amazon_key'],
-               secret_access_key: @config['fosdick_amazon_secret_key']) if @config
+    AWS.config(access_key_id: @config['amazon_key'],
+               secret_access_key: @config['amazon_secret_key']) if @config
   end
 
   post '/add_shipment' do
@@ -23,7 +23,7 @@ class FosdickEndpoint < EndpointBase::Sinatra::Base
 
   post '/get_shipments' do
     begin
-      shipments  = Processor.receive_results(@config['fosdick_bucket'])
+      shipments  = Processor.receive_results(@config['bucket'])
       code = 200
     rescue => e
       msg  = error_message(e)

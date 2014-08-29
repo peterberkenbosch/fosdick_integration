@@ -15,8 +15,6 @@ module Documents
     def to_message
       {
         id: @external_order_num,
-        number: @external_order_num.split('-')[0],
-        order_number: @external_order_num.split('-')[1],
         tracking: @tracking_num
       }
     end
