@@ -4,7 +4,7 @@ class Sender
   format :xml
 
   def self.send_doc(doc, config)
-    client = config['fosdick_client']
+    client = config['client_name']
     res    = post("/#{client}/cart/ipost.asp", body: doc)
     validate(res)
 

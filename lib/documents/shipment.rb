@@ -55,8 +55,8 @@ module Documents
     end
 
     def test?
-      case @config['test'].to_s.downcase
-      when 'yes'
+      case @config['test'].to_i
+      when 1
         true
       else
         false
