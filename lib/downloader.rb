@@ -11,6 +11,8 @@ class Downloader
     delete_files = []
 
     @bucket.objects.each do |object|
+      next unless object.key.downcase.include? 'ship'
+
       buffer = StringIO.new("", 'w')
       object.read do |chunk|
         buffer << chunk
