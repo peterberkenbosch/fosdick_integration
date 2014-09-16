@@ -15,6 +15,7 @@ module Documents
     def to_message
       {
         id: @external_order_num,
+        status: 'shipped',
         tracking: @tracking_num
       }
     end
