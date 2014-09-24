@@ -7,17 +7,15 @@ class Parser
       f[:content].each_line do |line|
         name = f[:name]
 
-        break if !name.include? 'RET'
-
-        #skip if line contains no data
+        # skip if line contains no data
         next if line.blank? || line.match(/(Ext Order #|TRAILER RECORD|SKU)/)
 
-        doc = Documents::ShipmentResult.new(line) if name.include? 'ship'
+        doc = Documents::ShipmentResult.new(line) if name.downcase.include? 'ship'
 
         msgs << doc.to_message
       end
     end
 
-    return msgs
+    msgs
   end
 end
