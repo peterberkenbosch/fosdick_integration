@@ -18,6 +18,7 @@ group :test do
   gem 'rack-test'
   gem 'webmock'
   gem 'vcr'
+  gem 'pry-byebug'
 end
 
 group :production do
@@ -29,3 +30,4 @@ gem 'sinatra'
 gem 'tilt', '~> 1.4.1'
 gem 'tilt-jbuilder', require: 'sinatra/jbuilder'
 gem 'endpoint_base', :github => 'spree/endpoint_base'
+gem 'rake'

@@ -3,7 +3,7 @@ class Processor
     doc = Documents::Shipment.new(shipment, config)
     res = Sender.send_doc(doc.to_xml, config)
 
-    return sent_notification(res)
+    sent_notification(res)
   end
 
   def self.receive_results(bucket)
@@ -11,14 +11,10 @@ class Processor
     files = down.download_files
 
     if files.empty?
-      messages = empty_notification
+      empty_notification
     else
-      ship_results = Parser.parse(files)
-      messages = ship_results.select { |msg| msg.has_key? :number }
-      # notifications = ship_results.select { |msg| msg.has_key? :level }
+      Parser.parse(files)
     end
-
-    return messages
   end
 
   private
@@ -27,6 +23,6 @@ class Processor
   end
 
   def self.empty_notification
-    'There were no shipment result, inventory level file, or RET files available for download'
+    'There were no shipment result files available for download'
   end
 end
