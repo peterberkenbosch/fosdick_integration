@@ -9,9 +9,9 @@ module Documents
       builder = Nokogiri::XML::Builder.new do |xml|
         xml.UnitycartOrderPost('xml:lang' => 'en-US') {
           xml.ClientCode(@config['client_code'])
+          xml.Test('Y') if test?
           xml.TransactionID(SecureRandom.hex(15))
           xml.Order {
-            xml.Test('Y') if test?
             xml.ShippingMethod(@shipment['shipping_method'])
             xml.Subtotal(0)
             xml.Total(0)
@@ -26,6 +26,14 @@ module Documents
             xml.ShipState(ship_state)
             xml.ShipZip(@shipment['shipping_address']['zipcode'])
             xml.ShipPhone(@shipment['shipping_address']['phone'])
+
+            # check if all Custom1 through Custom5
+            # are present and include in the xml
+            #
+            (1..5).each do |i|
+              next unless @shipment.key? "custom#{i}"
+              xml.send("Custom#{i}", @shipment["custom#{i}"])
+            end
 
             xml.Items {
               @shipment['items'].each_with_index do |item, index|
