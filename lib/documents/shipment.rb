@@ -8,7 +8,7 @@ module Documents
     def to_xml
       builder = Nokogiri::XML::Builder.new do |xml|
         xml.UnitycartOrderPost('xml:lang' => 'en-US') {
-          xml.ClientCode(@config['client_code'])
+          xml.ClientCode(@shipment['adcode'] || @config['client_code'])
           xml.Test('Y') if test?
           xml.TransactionID(SecureRandom.hex(15))
           xml.Order {
