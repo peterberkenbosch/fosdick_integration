@@ -1,6 +1,7 @@
 class Sender
   include HTTParty
-  base_uri 'https://www.unitycart.com'
+  #base_uri 'https://www.unitycart.com'
+  base_uri 'https://www-unitycart-com-x2jgzqb3h66b.runscope.net/'
   format :xml
 
   def self.send_doc(doc, config)
