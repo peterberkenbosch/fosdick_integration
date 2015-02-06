@@ -12,13 +12,13 @@ module Documents
     end
 
     def to_message
-      level = @total_available.to_i < 200 ? 'warn' : 'info'
-
       {
-        level: level,
-        subject: "Inventory For Item #{@sku}",
-        description: "SKU: #{@sku}, Total Available: #{@total_available}, On Hand Count: #{@on_hand_ct}, " <<
-                     "On Hand Reno: #{@on_hand_reno}, On Hand Reno: #{@on_hand_reno}, Committed: #{@committed}"
+        id: @sku,
+        total_available: @total_available,
+        on_hand_count: @on_hand_ct,
+        on_hand_reno:  @on_hand_reno,
+        on_hand_other: @on_hand_other,
+        committed: @committed
       }
     end
   end

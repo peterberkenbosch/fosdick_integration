@@ -13,7 +13,7 @@ class FosdickEndpoint < EndpointBase::Sinatra::Base
       msg = Processor.send_shipment(@payload[:shipment], @config)
       code = 200
     rescue => e
-      msg  = error_message(e)
+      msg  = e.message
       code = 500
     end
 
@@ -23,10 +23,10 @@ class FosdickEndpoint < EndpointBase::Sinatra::Base
 
   post '/get_shipments' do
     begin
-      shipments  = Processor.receive_results(@config['bucket'])
+      shipments  = Processor.receive_results(@config['bucket'], 'ship')
       code = 200
     rescue => e
-      msg  = error_message(e)
+      msg  = e.message
       code = 500
     end
 
@@ -41,11 +41,23 @@ class FosdickEndpoint < EndpointBase::Sinatra::Base
     process_result code
   end
 
-  def base_msg
-    { message_id: @message[:message_id] }
-  end
+  post '/get_inventory' do
+    begin
+      inventories  = Processor.receive_results(@config['bucket'], 'inventory')
+      code = 200
+    rescue => e
+      msg  = e.message
+      code = 500
+    end
 
-  def error_message(e)
-    e.message
+    if inventories.is_a?(Array)
+      inventories.each do |inventory|
+        add_object :inventory, inventory
+      end
+      set_summary "#{inventories.length} inventory imported from Fosdick."
+    else
+      set_summary inventories
+    end
+    process_result code
   end
 end

@@ -6,14 +6,14 @@ class Processor
     sent_notification(res)
   end
 
-  def self.receive_results(bucket)
+  def self.receive_results(bucket, type)
     down  = Downloader.new(bucket)
-    files = down.download_files
+    files = down.download_files(type)
 
     if files.empty?
       empty_notification
     else
-      Parser.parse(files)
+      Parser.parse(files, type)
     end
   end
 

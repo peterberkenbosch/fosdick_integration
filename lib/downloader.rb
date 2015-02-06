@@ -6,12 +6,12 @@ class Downloader
     @bucket = s3.buckets[bucket]
   end
 
-  def download_files
+  def download_files(type)
     files = []
     delete_files = []
 
     @bucket.objects.each do |object|
-      next unless object.key.downcase.include? 'ship'
+      next unless object.key.downcase.include? type
 
       buffer = StringIO.new("", 'w')
       object.read do |chunk|
