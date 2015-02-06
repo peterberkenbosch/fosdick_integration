@@ -1,9 +1,9 @@
 class Parser
   def self.parse(files, type)
     if type == 'ship'
-      parse_shipments
+      parse_shipments(files)
     else
-      parse_inventory
+      parse_inventory(files)
     end
   end
 

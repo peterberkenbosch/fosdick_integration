@@ -11,7 +11,7 @@ class Processor
     files = down.download_files(type)
 
     if files.empty?
-      empty_notification
+      empty_notification(type)
     else
       Parser.parse(files, type)
     end
@@ -22,7 +22,11 @@ class Processor
     "Successfully Sent Shipment to Fosdick. Confirmation ##{res}"
   end
 
-  def self.empty_notification
-    'There were no shipment result files available for download'
+  def self.empty_notification(type)
+    if type == 'ship'
+      'There were no shipment result files available for download'
+    else
+      'There were no inventory files available'
+    end
   end
 end
