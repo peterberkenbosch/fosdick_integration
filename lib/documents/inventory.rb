@@ -14,7 +14,7 @@ module Documents
     def to_message
       {
         id: @sku,
-        total_available: @total_available,
+        quantity: @total_available,
         on_hand_count: @on_hand_ct,
         on_hand_reno:  @on_hand_reno,
         on_hand_other: @on_hand_other,
