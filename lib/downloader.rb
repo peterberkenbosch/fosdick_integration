@@ -31,7 +31,7 @@ class Downloader
       delete_files << object.key
     end
 
-    #delete_files.each { |f| delete_file f }
+    delete_files.each { |f| delete_file f }
     return files
   end
 
