@@ -6,11 +6,18 @@ class Downloader
     @bucket = s3.buckets[bucket]
   end
 
-  def download_files(type)
+  def download_files(type, folder_name="")
     files = []
     delete_files = []
 
-    @bucket.objects.each do |object|
+    objects = nil
+    if folder_name.present?
+      objects = @bucket.objects.with_prefix(folder_name)
+    else
+      objects = @bucket.objects
+    end
+
+    objects.each do |object|
       next unless object.key.downcase.include? type
 
       buffer = StringIO.new("", 'w')

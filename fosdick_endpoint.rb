@@ -23,7 +23,7 @@ class FosdickEndpoint < EndpointBase::Sinatra::Base
 
   post '/get_shipments' do
     begin
-      shipments  = Processor.receive_results(@config['bucket'], 'ship')
+      shipments  = Processor.receive_results(@config['bucket'], 'ship', "shipments")
       code = 200
     rescue => e
       msg  = e.message

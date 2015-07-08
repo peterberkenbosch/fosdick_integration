@@ -6,9 +6,9 @@ class Processor
     sent_notification(res)
   end
 
-  def self.receive_results(bucket, type)
+  def self.receive_results(bucket, type, folder_name= "")
     down  = Downloader.new(bucket)
-    files = down.download_files(type)
+    files = down.download_files(type, folder_name)
 
     if files.empty?
       empty_notification(type)
