@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 
 gem 'httparty'
-gem 'nokogiri'
+gem 'nokogiri', '>= 1.10.4'
 gem 'model_un'
-gem 'aws-sdk'
+gem 'aws-sdk', '>= 1.52.0'
 gem 'timecop'
 
 group :development do
