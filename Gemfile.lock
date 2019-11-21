@@ -830,9 +830,9 @@ GEM
     model_un (0.2.1)
     multi_json (1.10.1)
     multi_xml (0.5.5)
-    nokogiri (1.10.4)
+    nokogiri (1.10.5)
       mini_portile2 (~> 2.4.0)
-    nokogiri (1.10.4-java)
+    nokogiri (1.10.5-java)
     pry (0.10.1)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -907,7 +907,7 @@ DEPENDENCIES
   guard-rspec
   httparty
   model_un
-  nokogiri (>= 1.10.4)
+  nokogiri (>= 1.10.5)
   pry
   pry-byebug
   rack-test
