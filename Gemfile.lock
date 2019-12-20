@@ -818,7 +818,7 @@ GEM
     jmespath (1.4.0)
     json (1.8.6)
     json (1.8.6-java)
-    kgio (2.9.2)
+    kgio (2.11.2)
     listen (2.7.9)
       celluloid (>= 0.15.2)
       rb-fsevent (>= 0.9.3)
@@ -845,12 +845,12 @@ GEM
     pry-byebug (1.3.3)
       byebug (~> 2.7)
       pry (~> 0.10)
-    rack (1.5.2)
-    rack-protection (1.5.3)
+    rack (1.6.12)
+    rack-protection (1.5.5)
       rack
-    rack-test (0.6.2)
-      rack (>= 1.0)
-    raindrops (0.13.0)
+    rack-test (1.1.0)
+      rack (>= 1.0, < 3)
+    raindrops (0.19.0)
     rake (10.3.2)
     rb-fsevent (0.9.4)
     rb-inotify (0.9.5)
@@ -868,10 +868,10 @@ GEM
       rspec-support (~> 3.0.0)
     rspec-support (3.0.4)
     safe_yaml (1.0.3)
-    sinatra (1.4.5)
-      rack (~> 1.4)
+    sinatra (1.4.8)
+      rack (~> 1.5)
       rack-protection (~> 1.4)
-      tilt (~> 1.3, >= 1.3.4)
+      tilt (>= 1.3, < 3)
     slop (3.6.0)
     spoon (0.0.4)
       ffi
@@ -887,9 +887,8 @@ GEM
     timers (1.1.0)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
-    unicorn (4.8.3)
+    unicorn (5.5.2)
       kgio (~> 2.6)
-      rack
       raindrops (~> 0.7)
     vcr (2.9.2)
     webmock (1.18.0)
@@ -910,16 +909,16 @@ DEPENDENCIES
   nokogiri (>= 1.10.4)
   pry
   pry-byebug
-  rack-test
+  rack-test (>= 0.6.2)
   rake
   rb-fsevent (~> 0.9.1)
   rspec
-  sinatra
+  sinatra (>= 1.4.5)
   terminal-notifier-guard
   tilt (~> 1.4.1)
   tilt-jbuilder
   timecop
-  unicorn
+  unicorn (>= 4.8.3)
   vcr
   webmock
 
