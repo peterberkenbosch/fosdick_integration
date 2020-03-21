@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'httparty'
+gem 'httparty', '>= 0.14.0'
 gem 'nokogiri', '>= 1.10.8'
 gem 'model_un'
 gem 'aws-sdk', '>= 1.52.0'
@@ -28,6 +28,6 @@ end
 
 gem 'sinatra'
 gem 'tilt', '~> 1.4.1'
-gem 'tilt-jbuilder', require: 'sinatra/jbuilder'
+gem 'tilt-jbuilder', '0.6.1'
 gem 'endpoint_base', :github => 'spree/endpoint_base'
 gem 'rake'
