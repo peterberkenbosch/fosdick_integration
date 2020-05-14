@@ -15,7 +15,7 @@ group :test do
   gem 'guard-rspec'
   gem 'terminal-notifier-guard'
   gem 'rb-fsevent', '~> 0.9.1'
-  gem 'rack-test'
+  gem 'rack-test', '>= 0.6.2'
   gem 'webmock'
   gem 'vcr'
   gem 'pry-byebug'
@@ -23,10 +23,10 @@ end
 
 group :production do
   gem 'foreman'
-  gem 'unicorn'
+  gem 'unicorn', '>= 4.8.3'
 end
 
-gem 'sinatra'
+gem 'sinatra', '>= 2.0.0'
 gem 'tilt', '~> 1.4.1'
 gem 'tilt-jbuilder', require: 'sinatra/jbuilder'
 gem 'endpoint_base', :github => 'spree/endpoint_base'
