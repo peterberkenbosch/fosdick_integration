@@ -16,7 +16,7 @@ group :test do
   gem 'terminal-notifier-guard'
   gem 'rb-fsevent', '~> 0.9.1'
   gem 'rack-test'
-  gem 'webmock'
+  gem 'webmock', '>= 1.18.0'
   gem 'vcr'
   gem 'pry-byebug'
 end
